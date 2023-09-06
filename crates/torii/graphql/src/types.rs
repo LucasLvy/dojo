@@ -43,7 +43,7 @@ impl fmt::Display for ScalarType {
 
 impl ScalarType {
     pub fn types() -> HashSet<ScalarType> {
-        vec![
+        HashSet::from([
             ScalarType::U8,
             ScalarType::U16,
             ScalarType::U32,
@@ -57,28 +57,24 @@ impl ScalarType {
             ScalarType::ClassHash,
             ScalarType::DateTime,
             ScalarType::Felt252,
-        ]
-        .into_iter()
-        .collect()
+        ])
     }
 
     pub fn numeric_types() -> HashSet<ScalarType> {
-        vec![
+        HashSet::from([
             ScalarType::U8,
             ScalarType::U16,
             ScalarType::U32,
             ScalarType::U64,
             ScalarType::USize,
             ScalarType::Bool,
-        ]
-        .into_iter()
-        .collect()
+        ])
     }
 
     // u128 and u256 are non numeric here due to
     // sqlite constraint on integer columns
-    pub fn _non_numeric_types() -> HashSet<ScalarType> {
-        vec![
+    pub fn non_numeric_types() -> HashSet<ScalarType> {
+        HashSet::from([
             ScalarType::U128,
             ScalarType::U256,
             ScalarType::Cursor,
@@ -86,9 +82,7 @@ impl ScalarType {
             ScalarType::ClassHash,
             ScalarType::DateTime,
             ScalarType::Felt252,
-        ]
-        .into_iter()
-        .collect()
+        ])
     }
 
     pub fn is_numeric_type(&self) -> bool {
